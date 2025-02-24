@@ -13,8 +13,8 @@ class NetworkManager: ObservableObject {
     static var shared = NetworkManager()
     
     func fetchRoverPhotos(completion: @escaping (Result<RoverPhoto, Error>) -> Void) {
-        let apiKey = "UJiC6fK8Rl3bBdhlEYTAsGCeIGl3UBTcmgEbytHR"
-        let urlString = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=\(apiKey)"
+        let apiKey = Constants.apiKey
+        let urlString = "\(Constants.url)\(apiKey)"
         
         guard let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
